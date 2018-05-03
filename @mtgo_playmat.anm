@@ -1,0 +1,129 @@
+@player1
+--track0:有効,0,1,1,1
+if (obj.track0 > 0) then
+  mtgo_player1_exists = true
+  mtgo_player1_obj, mtgo_player1_fw, mtgo_player1_fh = obj.getpixeldata("alloc")
+  mtgo_player1_pos_x = obj.ox + obj.x
+  mtgo_player1_pos_y = obj.oy + obj.y
+else
+  mtgo_player1_exists = false
+  mtgo_player1_obj = nil
+end
+
+@player2
+--track0:有効,0,1,1,1
+if (obj.track0 > 0) then
+  mtgo_player2_exists = true
+  mtgo_player2_obj, mtgo_player2_fw, mtgo_player2_fh = obj.getpixeldata("alloc")
+  mtgo_player2_pos_x = obj.ox + obj.x
+  mtgo_player2_pos_y = obj.oy + obj.y
+else
+  mtgo_player2_exists = false
+  mtgo_player2_obj = nil
+end
+
+@player3
+--track0:有効,0,1,1,1
+if (obj.track0 > 0) then
+  mtgo_player3_exists = true
+  mtgo_player3_obj, mtgo_player3_fw, mtgo_player3_fh = obj.getpixeldata("alloc")
+  mtgo_player3_pos_x = obj.ox + obj.x
+  mtgo_player3_pos_y = obj.oy + obj.y
+else
+  mtgo_player3_exists = false
+  mtgo_player3_obj = nil
+end
+
+@player4
+--track0:有効,0,1,1,1
+if (obj.track0 > 0) then
+  mtgo_player4_exists = true
+  mtgo_player4_obj, mtgo_player4_fw, mtgo_player4_fh = obj.getpixeldata("alloc")
+  mtgo_player4_pos_x = obj.ox + obj.x
+  mtgo_player4_pos_y = obj.oy + obj.y
+else
+  mtgo_player4_exists = false
+  mtgo_player4_obj = nil
+end
+
+@table
+--track0:プレイヤー,1,4,1,1
+--track1:ポイント,1,4,2,1
+--dialog:座標,pos={0,0,0,0}
+local flood = require ("flood")
+local num = obj.track1
+obj.setanchor("pos",num,"line")
+local fixed_range = 0
+local table_pos_x = obj.ox + obj.x
+local table_pos_y = obj.oy + obj.y
+
+if obj.track0 == 1 and mtgo_player1_exists then
+  local fobj, fw, fh = obj.getpixeldata()
+  local offset_x = mtgo_player1_pos_x - table_pos_x
+  local offset_y = mtgo_player1_pos_y - table_pos_y
+  flood.mtgo_table(
+    fobj, fw, fh, mtgo_player1_obj, mtgo_player1_fw, mtgo_player1_fh, offset_x, offset_y, num,
+    pos[1] + fw / 2,
+    pos[2] + fh / 2,
+    pos[3] + fw / 2,
+    pos[4] + fh / 2,
+    pos[5] + fw / 2,
+    pos[6] + fh / 2,
+    pos[7] + fw / 2,
+    pos[8] + fh / 2
+    )
+  obj.putpixeldata(fobj)
+end
+
+if obj.track0 == 2 and mtgo_player2_exists then
+  local fobj, fw, fh = obj.getpixeldata()
+  local offset_x = mtgo_player2_pos_x - table_pos_x
+  local offset_y = mtgo_player2_pos_y - table_pos_y
+  flood.mtgo_table(
+    fobj, fw, fh, mtgo_player2_obj, mtgo_player2_fw, mtgo_player2_fh, offset_x, offset_y, num,
+    pos[1] + fw / 2,
+    pos[2] + fh / 2,
+    pos[3] + fw / 2,
+    pos[4] + fh / 2,
+    pos[5] + fw / 2,
+    pos[6] + fh / 2,
+    pos[7] + fw / 2,
+    pos[8] + fh / 2
+    )
+  obj.putpixeldata(fobj)
+end
+
+if obj.track0 == 3 and mtgo_player3_exists then
+  local fobj, fw, fh = obj.getpixeldata()
+  local offset_x = mtgo_player3_pos_x - table_pos_x
+  local offset_y = mtgo_player3_pos_y - table_pos_y
+  flood.mtgo_table(
+    fobj, fw, fh, mtgo_player3_obj, mtgo_player3_fw, mtgo_player3_fh, offset_x, offset_y, num,
+    pos[1] + fw / 2,
+    pos[2] + fh / 2,
+    pos[3] + fw / 2,
+    pos[4] + fh / 2,
+    pos[5] + fw / 2,
+    pos[6] + fh / 2,
+    pos[7] + fw / 2,
+    pos[8] + fh / 2
+    )
+  obj.putpixeldata(fobj)
+end
+
+if obj.track0 == 4 and mtgo_player4_exists then
+  local fobj, fw, fh = obj.getpixeldata()
+  local offset_x = mtgo_player4_pos_x - table_pos_x
+  local offset_y = mtgo_player4_pos_y - table_pos_y
+  flood.mtgo_table(fobj, fw, fh, mtgo_player4_obj, mtgo_player4_fw, mtgo_player4_fh, offset_x, offset_y, num,
+    pos[1] + fw / 2,
+    pos[2] + fh / 2,
+    pos[3] + fw / 2,
+    pos[4] + fh / 2,
+    pos[5] + fw / 2,
+    pos[6] + fh / 2,
+    pos[7] + fw / 2,
+    pos[8] + fh / 2
+  )
+  obj.putpixeldata(fobj)
+end

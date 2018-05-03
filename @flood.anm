@@ -1,0 +1,42 @@
+@fill
+--color:0xffffff
+--track0:X,-1000,1000,0
+--track1:Y,-1000,1000,0
+--track2:”ÍˆÍ‰ºŒÀ,0,255,10,1
+--track3:”ÍˆÍãŒÀ,0,255,10,1
+--check0:ŒÅ’è”ÍˆÍ,0
+local flood = require ("flood")
+obj.setanchor("track",0,"line")
+local lo_diff = obj.track2
+local up_diff = obj.track3
+local fixed_range = 0
+if (obj.check0) then
+  fixed_range = 1
+end
+local fobj, fw, fh = obj.getpixeldata()
+
+local target_x = obj.track0 + fw / 2
+local target_y = obj.track1 + fh / 2
+flood.fill(fobj, fw, fh, target_x, target_y, lo_diff, up_diff, color, fixed_range)
+obj.putpixeldata(fobj)
+
+@clear
+--track0:X,-1000,1000,0
+--track1:Y,-1000,1000,0
+--track2:”ÍˆÍ‰ºŒÀ,0,255,10,1
+--track3:”ÍˆÍãŒÀ,0,255,10,1
+--check0:ŒÅ’è”ÍˆÍ,0
+local flood = require ("flood")
+obj.setanchor("track",0,"line")
+local lo_diff = obj.track2
+local up_diff = obj.track3
+local fixed_range = 0
+if (obj.check0) then
+  fixed_range = 1
+end
+local fobj, fw, fh = obj.getpixeldata()
+
+local target_x = obj.track0 + fw / 2
+local target_y = obj.track1 + fh / 2
+flood.clear(fobj, fw, fh, target_x, target_y, lo_diff, up_diff, fixed_range)
+obj.putpixeldata(fobj)
